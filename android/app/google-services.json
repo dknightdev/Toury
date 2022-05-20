@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "418977230943",
+    "project_id": "toury-e2514",
+    "storage_bucket": "toury-e2514.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418977230943:android:b3a1e4b3111149be896bea",
+        "android_client_info": {
+          "package_name": "com.movil_toury"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418977230943-qgi6rlqmk4nlrv9kle37majmoe34h370.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.movil_toury",
+            "certificate_hash": "a5cce074324c850bf757a6e28348854847bd1e86"
+          }
+        },
+        {
+          "client_id": "418977230943-m00hkemhmtuhliuq9r0hjojijoqamli1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMZklTNDa6NLd0C9iuy2Zpu2kXoeIBW2s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418977230943-m00hkemhmtuhliuq9r0hjojijoqamli1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
