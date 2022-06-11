@@ -21,7 +21,10 @@ import { Home } from './pages/home/home'
 import { Profile } from './pages/profile/profile'
 import { SiteList } from './pages/site/siteList/SiteList'
 import { Site } from './pages/site/Site'
+import { Event } from './pages/event/Event'
 import { Review } from './pages/review/Review'
+import { EventList } from './pages/event/eventList/EventList'
+import { EventAdd } from './pages/event/eventAdd/EventAdd'
 
 //Utils
 import { secureStorage } from './utils/preferences'
@@ -86,16 +89,21 @@ export default function Router () {
                             drawerStyle: {borderTopRightRadius: 25, borderBottomRightRadius: 25, overflow: 'hidden'}
                         }}
                         drawerContent={props => <LateralBar {...props}/>}
-                        initialRouteName="BarNavigation" 
-                        backBehavior='BarNavigation'
+                        initialRouteName="BarNavigation"
                         animation='fade'
                     >
-                        <Stack.Screen name='Home' component={Home}/>
-                        <Stack.Screen name='Profile' component={Profile}/>
-                        <Stack.Screen name='Search' component={SiteList}/>
-                        <Stack.Screen name='Site' component={Site}/>
-                        <Stack.Screen name='Review' component={Review}/>
+                        {/* BarNavigation: Contiene las interfaces -> Home, Profile, SiteList*/}
                         <Stack.Screen name='BarNavigation' component={BarNavigation}/>
+                        {/* <Stack.Screen name='Search' component={SiteList}/>
+                        <Stack.Screen name='Profile' component={Profile}/>
+                        <Stack.Screen name='Home' component={Home}/> */}
+
+
+                        <Stack.Screen name='Site' component={Site}/>
+                        <Stack.Screen name='Event' component={Event}/>
+                        <Stack.Screen name='Review' component={Review}/>
+                        <Stack.Screen name='EventAdd' component={EventAdd}/>
+                        <Stack.Screen name='EventList' component={EventList}/>
                     </Drawer.Navigator>
                 ))
             }

@@ -9,14 +9,14 @@ import Swiper from 'react-native-swiper'
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 import { appColors } from '../styles'
 
-export const Banner = ({data}) => {
+export const Banner = ({data, func}) => {
 
     const [ stateImage, setStateImage ] = useState({fail: false, loading: true})
 
     return (
         (<Swiper 
             autoplay={true}
-            autoplayTimeout={5} 
+            autoplayTimeout={6} 
             showsButtons={true} 
             showsPagination={true} 
             dotColor={appColors.gray1}
@@ -28,17 +28,17 @@ export const Banner = ({data}) => {
             nextButton={<Text style={styles.buttonLeft}>{'›'}</Text>}
             prevButton={<Text style={styles.buttonRight}>{'‹'}</Text>}
         >
-            {data.map(({site_id, image, name})=>{
+            {data.map((site)=>{
                 return (
-                    <TouchableOpacity key={site_id} style={styles.banner} activeOpacity={0.7} onPress={() => {}}>
+                    <TouchableOpacity key={site.id} style={styles.banner} activeOpacity={0.7} onPress={() => {func(site)}}>
                         <Image
                             resizeMode="cover" 
                             style={styles.imageBanner} 
                             onError={() => setStateImage({...stateImage,fail: true})}
                             onLoadEnd={() => setStateImage({...stateImage,loading: false})} 
-                            source={(stateImage.fail || stateImage.loading) ? require('../../public/imagenesGeneral/caminataimg.png') : {uri: image}}
+                            source={(stateImage.fail || stateImage.loading || !site.image) ? require('../../public/imagenesGeneral/caminataimg.png') : {uri: site.image}}
                         />
-                        <View style={styles.containerName}><Text style={styles.textName}>{name}</Text></View>
+                        <View style={styles.containerName}><Text style={styles.textName}>{site.name}</Text></View>
                     </TouchableOpacity>
                 )
             })}

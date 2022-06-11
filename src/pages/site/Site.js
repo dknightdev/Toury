@@ -14,6 +14,7 @@ import { appColors, stylesContainers, stylesInputs, stylesShadows, uniqueColors 
 import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions'
 
 export const Site = (props) => {
+    //Variables
     const [data, setData] = useState({})
     const [ stateImage, setStateImage ] = useState({fail: false, loading: true})
 

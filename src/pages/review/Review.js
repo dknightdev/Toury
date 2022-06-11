@@ -44,7 +44,6 @@ export const Review = (props) => {
 
     //Render recycler
     const rowRenderer = (type, item, index, extendedState) => {
-        console.log(item.calification)
         return(
             <View style={[reviewStyles.containerReview, stylesShadows.shadow1]}>
                 <View style={reviewStyles.containerReviewSection1}>

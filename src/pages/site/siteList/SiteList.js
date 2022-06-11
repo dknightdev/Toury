@@ -36,7 +36,7 @@ export const SiteList = (props) => {
                 let dataTemp = filterByType(dataSites, type)
                 if(filter.varSearch != ''){ dataTemp = filterByWord(dataTemp, filter.varSearch) }
 
-                setFilter({...filter, type: type})
+                setFilter({...filter, type: type, data: dataSites})
                 setDataFiltered(dataFiltered.cloneWithRows(dataTemp))
             }else {
                 setFilter({...filter, type: -1, data: dataSites})
@@ -92,7 +92,7 @@ export const SiteList = (props) => {
 
     return(
         <View style={[stylesContainers.containerPage, siteListStyles.containerPage]}>
-            <TouchableOpacity activeOpacity={0.6} style={siteListStyles.buttonReturn} onPress={() => props.navigation.goBack()}>
+            <TouchableOpacity activeOpacity={0.6} style={siteListStyles.buttonReturn} onPress={() => props.navigation.jumpTo('Home')}>
                 <Icon color={appColors.word1} size={Math.round(responsiveHeight(4.2))} name={'arrow-back'}/>
             </TouchableOpacity>
 

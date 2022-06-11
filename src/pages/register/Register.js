@@ -269,7 +269,7 @@ export const Register = (props) => {
                 </View>
                 
                 <View style={[loginStyles.containerButton]}>
-                    <TouchableHighlight disabled={loading} underlayColor={appColors.primaryUnderlay} style={[loginStyles.buttonPrincipal, stylesShadows.shadow1, loading ? {backgroundColor: appColors.primaryDisabled} : {backgroundColor: appColors.primary}]} onPress={() => submit()}>
+                    <TouchableHighlight disabled={loading} underlayColor={appColors.primaryUnderlay} style={[loginStyles.buttonPrincipal, stylesShadows.shadow2, loading ? {backgroundColor: appColors.primaryDisabled} : {backgroundColor: appColors.primary}]} onPress={() => submit()}>
                         {loading ? <ActivityIndicator style={{position: 'absolute'}} size={responsiveHeight(3.3)} color={appColors.white1}/> : <Text style={loginStyles.textButtonPrincipal}>Registrar</Text>}
                     </TouchableHighlight>
                 </View>

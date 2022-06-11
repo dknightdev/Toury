@@ -40,6 +40,9 @@ const appColors = {
 
     word1: '#353940',
     word2: '#393939',
+
+    word3: '#383e4a',
+    word4: '#282c34',
     
     gray: '#a1a1a1',
     gray1: '#abb2bf',

@@ -27,7 +27,7 @@ export const CardEvent = ({item, size, func}) => {
                 <Text style={eventStyles.textName}>{ item.name.length > 25 ? item.name.slice(0,25) + '...' : item.name }</Text>
                 <View style={eventStyles.containerHorizontal}>
                     <Icon name='calendar-heart' size={Math.round(responsiveWidth(5))} color={appColors.white3}/>
-                    <Text style={eventStyles.textDate}>{item.date}</Text>
+                    <Text style={eventStyles.textDate}>{item.date.split('T')[0]}</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -68,14 +68,14 @@ const eventStyles = StyleSheet.create({
     containerFooter: {
         width: '100%',
         height: '40%',
-        paddingHorizontal: responsiveWidth(2),
+        paddingHorizontal: responsiveWidth(2.6),
     },
 
 
     textName: {
-        fontSize: responsiveHeight(1.7), 
+        fontSize: responsiveHeight(1.6), 
         color: appColors.white3,
-        fontWeight: '700',
+        fontWeight: '600',
         textAlign: 'left',
         alignSelf: 'center',
     },

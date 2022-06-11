@@ -23,7 +23,6 @@ export const BarNavigation = (props) => {
     return(
         <Tab.Navigator
             initialRouteName='Home'
-            backBehavior='order'
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,

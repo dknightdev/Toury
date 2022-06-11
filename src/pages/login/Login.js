@@ -294,7 +294,7 @@ export const Login = ({navigation}) => {
                 </View>
                 
                 <View style={[loginStyles.containerButton]}>
-                    <TouchableHighlight disabled={loading} underlayColor={appColors.primaryUnderlay} style={[loginStyles.buttonPrincipal, stylesShadows.shadow1, loading ? {backgroundColor: appColors.primaryDisabled} : {backgroundColor: appColors.primary}]} onPress={() => submit()}>
+                    <TouchableHighlight disabled={loading} underlayColor={appColors.primaryUnderlay} style={[loginStyles.buttonPrincipal, stylesShadows.shadow2, loading ? {backgroundColor: appColors.primaryDisabled} : {backgroundColor: appColors.primary}]} onPress={() => submit()}>
                         {loading ? <ActivityIndicator style={{position: 'absolute'}} size={responsiveHeight(3.3)} color={appColors.white1}/> : <Text style={loginStyles.textButtonPrincipal}>Iniciar sesión</Text>}
                     </TouchableHighlight>
                     <TouchableOpacity activeOpacity={0.6} style={{position: 'absolute', bottom: responsiveHeight(2)}} onPress={() => {navigation.navigate('PreRegister')}}>

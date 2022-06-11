@@ -11,7 +11,7 @@ export const Profile = (props) => {
     return(
         <View style={[stylesContainers.containerPage, profileStyles.containerPage]}>
             <Text style={{color: 'black'}}>
-                hola desde el perfil
+                En proceso de desarrollo
             </Text>
         </View>
     )

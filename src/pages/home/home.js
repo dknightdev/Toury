@@ -48,43 +48,40 @@ export const Home = (props) => {
 
     //Metodos
     useEffect(() => {
-        const executeEffect = async () => {
-            setProcessing({loading: true, refreshing: false})
-            const res = await conexionPetitionGeneral({}, 'getDataHome')
-
-            if(res.status === 200){
-                // await secureStorage.registerItem('dataUser', JSON.stringify(res.dataHome.dataUser))
-                // await secureStorage.registerItem('dataEvents', JSON.stringify(res.dataHome.dataEvents))
-                // await secureStorage.registerItem('dataBanner', JSON.stringify(res.dataHome.dataBanner))
-                // await secureStorage.registerItem('dataSites', JSON.stringify(res.dataHome.dataSites))
-
-                dispatch(setDataUser(res.dataHome.dataUser))
-                dispatch(setDataSites(res.dataHome.dataSites))
-
-                setDataHome({
-                    dataUser: res.dataHome.dataUser,
-                    dataEvents: dataHome.dataEvents.cloneWithRows(res.dataHome.dataEvents),
-                    dataBanner: res.dataHome.dataBanner,
-                    hoteles: dataHome.hoteles.cloneWithRows(res.dataHome.dataSites.filter(el => el.type == 0)),
-                    restaurantes: dataHome.restaurantes.cloneWithRows(res.dataHome.dataSites.filter(el => el.type == 1)),
-                })
-            }else if(res.status === 400){
-                setDataModal({textMain: 'Ha ocurrido un error', buttonText: 'Continuar', text: res.message, visible: true})
-            }
-
-            setProcessing({loading: false, refreshing: false})
-        }
+        const executeEffect = async () => { getDataHome() }
         executeEffect()
-    }, [processing.refreshing])
+    }, [processing.refreshing, props.route.params])
 
     const onRefresh = useCallback(() => {
         setProcessing({loading: true, refreshing: true})
+        getDataHome()
     }, [])
+
+    const getDataHome = async () => {
+        setProcessing({loading: true, refreshing: false})
+        const res = await conexionPetitionGeneral({}, 'getDataHome')
+
+        if(res.status === 200){
+            dispatch(setDataUser(res.dataHome.dataUser))
+            dispatch(setDataSites(res.dataHome.dataSites))
+
+            setDataHome({
+                dataUser: res.dataHome.dataUser,
+                dataEvents: dataHome.dataEvents.cloneWithRows(res.dataHome.dataEvents),
+                dataBanner: res.dataHome.dataBanner.map(el => res.dataHome.dataSites.find(el2 => el2.id == el.id)),
+                hoteles: dataHome.hoteles.cloneWithRows(res.dataHome.dataSites.filter(el => el.type == 0)),
+                restaurantes: dataHome.restaurantes.cloneWithRows(res.dataHome.dataSites.filter(el => el.type == 1)),
+            })
+        }else if(res.status === 400){
+            setDataModal({textMain: 'Ha ocurrido un error', buttonText: 'Continuar', text: res.message, visible: true})
+        }
+        setProcessing({loading: false, refreshing: false})
+    }
 
     //Render recycler
     const rowRendererEvents = (type, item, index, extendedState) => {
         return (
-            <CardEvent size={homeStyles.itemList1} item={item} func={() => {props.navigation.navigate('Profile')}}/>
+            <CardEvent size={homeStyles.itemList1} item={item} func={() => {props.navigation.navigate('Event', {data: item})}}/>
         )
     }
 
@@ -110,7 +107,6 @@ export const Home = (props) => {
             visible={dataModal.visible}
             toggleOverlay={() => setDataModal({text: '', textMain: '', buttonText: '', visible: false})}
         />
-
 
         {/* Pagina */}
         <SkeletonHome visible={processing.loading}>
@@ -142,7 +138,7 @@ export const Home = (props) => {
                                 <Text style={homeStyles.textSection1}>Descubre...</Text> 
                             </View>
                         </View>
-                        <Banner data={dataHome?.dataBanner}/>
+                        <Banner data={dataHome?.dataBanner} func={(site) => {props.navigation.navigate('Site', {data: site})}}/>
                     </View>
 
                     <View style={homeStyles.line}/>
@@ -151,7 +147,7 @@ export const Home = (props) => {
                         <View style={homeStyles.containerHeaderSection}>
                             <View style={homeStyles.containerHorizontal}> 
                                 <Text style={homeStyles.textSection1}>Eventos</Text>
-                                <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+                                <TouchableOpacity activeOpacity={0.6} onPress={() => {props.navigation.navigate('EventList')}}>
                                     <Text style={homeStyles.textSection2}>Ver todos</Text>
                                 </TouchableOpacity>
                             </View>
@@ -462,12 +458,12 @@ const homeStyles = StyleSheet.create({
 
 
     textHeader: {
-        fontSize: responsiveHeight(2.5),
+        fontSize: responsiveHeight(2.4),
         fontWeight: 'bold',
         color: appColors.white1,
     },
     textSection1: {
-        fontSize: responsiveHeight(2.5),
+        fontSize: responsiveHeight(2.4),
         fontWeight: '600',
         color: appColors.word1,
     },
