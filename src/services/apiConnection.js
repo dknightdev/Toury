@@ -2,7 +2,7 @@ import axios from "axios";
 import { secureStorage } from "../utils/preferences";
 import { fetch } from "@react-native-community/netinfo";
 
-const url = 'http://10.0.61.105:3333/'
+const url = 'http://172.17.23.177:3333/'
 const timeWait = 1000 * 8 //--> 8 segundo de espera de respuesta del servidor
 
 export const conexionPetitionSesion = async (data, route) => {

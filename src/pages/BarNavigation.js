@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 //Pages
 import { Home } from './home/home'
 import { SiteList } from './site/siteList/SiteList'
-import { Profile } from './profile/profile'
+import { Profile } from './profile/Profile'
 
 //Styles
 import { appColors } from '../styles'

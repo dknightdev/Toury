@@ -116,7 +116,7 @@ export const Home = (props) => {
                         <Text style={homeStyles.textHeader}>Hola {dataHome?.dataUser?.user_name}</Text>
                     </View>
                     <View style={homeStyles.containerAvatar}>
-                        <TouchableOpacity activeOpacity={0.7} onPress={() => {}} style={homeStyles.containerAvatar2}>
+                        <TouchableOpacity activeOpacity={0.7} onPress={() => {props.navigation.navigate('Profile')}} style={homeStyles.containerAvatar2}>
                             <Image
                                 resizeMode='contain'
                                 source={require('../../../public/user_images/imagen_user_0.png')}

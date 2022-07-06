@@ -26,7 +26,7 @@ let layoutProvider = new LayoutProvider(index => { return 'default'}, (type, dim
 export const EventList = (props) => {
 
     //Variables
-    const [filter, setFilter] = useState({id: 1, text: 'Mes'})
+    const [filter, setFilter] = useState({id: 0, text: 'Mes'})
     const { dataUser } = useSelector(state => state.generalReducer)
     const [dataModal, setDataModal] = useState({text: '', visible: false})
     const [processing, setProcessing] = useState({loading: false, refreshing: false})
@@ -66,6 +66,8 @@ export const EventList = (props) => {
         const currentDay = date.getDate()
 
         switch (fil.id){
+            case 0: 
+                return data
             case 1:
                 return data.filter(el => {
                     const [year, month] = el.date.split('T')[0].split('-')
@@ -101,7 +103,7 @@ export const EventList = (props) => {
                 text={dataModal.text}
                 visible={dataModal.visible}
                 func={(el) => {setDataEvents({...dataEvents, dataFiltered: dataEvents.dataFiltered.cloneWithRows(getDataFiltered(dataEvents.data, el))})}}
-                dataSelect={[{id: 1, text: 'Mes'}, {id: 2, text: 'Semana'}, {id: 3, text: 'Hoy'}]}
+                dataSelect={[{id: 0, text: 'Todos'}, {id: 1, text: 'Mes'}, {id: 2, text: 'Semana'}, {id: 3, text: 'Hoy'}]}
                 toggleOverlay={() => setDataModal({...dataModal, text: '', visible: false})}
             />
 

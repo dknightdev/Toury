@@ -105,7 +105,7 @@ export const EventAdd = (props) => {
             if(res.status === 200){
                 setDataModal({textMain: '¡Genial!', buttonText: 'Aceptar', text: res.message, visible: true, success: true})
             }else if(res.status === 400){
-                setDataModal({textMain: 'Ha ocurrido un error', buttonText: 'Continuar', text: res.message, visible: true})
+                setDataModal({textMain: 'Ha ocurrido un error', buttonText: 'Continuar', text: res.message, visible: true, success: false})
             }
 
             setLoading(false)

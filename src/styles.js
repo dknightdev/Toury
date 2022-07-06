@@ -23,6 +23,7 @@ const appColors = {
     primary: '#1976D2',
     primarySoft: '#4c84d6',
     primarySoftBackground: 'rgba(25, 118, 210, 0.75)',
+    primaryTransparent: 'rgba(25, 118, 210, 0.5)',
     secondary: '#ff6737',
     secondarySoft: '#f88566',
     secondarySoftBackground: '#f5c9c1',

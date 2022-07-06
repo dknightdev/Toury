@@ -15,19 +15,22 @@ export const CardEvent2 = ({item, func}) => {
 
     useEffect(() => {
         const executeEffect = async () => { 
+            
             const [year, month, day] = item.date.split('T')[0].split('-')
             const hour = item.time.split(':')[0]
             const minutes = item.time.split(':')[1]
 
             const date = new Date(year, month-1, day, hour, minutes)
+            const now = new Date()
 
-            if(date < new Date()) {
-                console.log(new Date().toLocaleString())
+            if(date.getTime() < now.getTime()) {
                 setExpired(true)
+            }else{
+                setExpired(false)
             }
         }
         executeEffect()
-    }, [])
+    }, [item])
     
     return(
         <TouchableHighlight disabled={expired} underlayColor={appColors.white3} onPress={func} style={[event2Styles.continerCard, stylesShadows.shadow1]}>
